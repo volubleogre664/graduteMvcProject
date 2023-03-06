@@ -1,3 +1,21 @@
 <div>
     <h1>Welcome to my custom page</h1>
+
+    <div class="container w-80">
+        <div class="row py-5">
+        <div class="col-sm">
+            <p>This button will take you to the home page</p>
+
+            <a class="btn btn-secondary" asp-controller="Home" asp-action="Privacy" >
+                Take me to home
+            </a>
+        </div>
+        <div class="col-sm">
+            <p>This button will take you to the privacy page</p>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="Index" >
+                Take me to privacy
+            </a>
+        </div>
+    </div>
+    </div>
 </div>
