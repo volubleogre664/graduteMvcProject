@@ -2,6 +2,7 @@ namespace FirstMVCProject.Models
 {
     public class ProfileViewModel
     {
+        public int ID { get; set; }
         public string Name { get; set; }
 
         public string Surname { get; set; }
@@ -14,14 +15,14 @@ namespace FirstMVCProject.Models
 
         public string City { get; set; } 
 
-        public ProfileViewModel(string _name, string _surname, DateTime _dob, int _age, string _country, string _city)
+        public ProfileViewModel(string Name, string Surname, DateTime DOB, int Age, string Country, string City)
         {
-            this.Name = _name;
-            this.Surname = _surname;
-            this.DOB = _dob;
-            this.Age = _age;
-            this.Country = _country;
-            this.City = _city;
+            this.Name = Name;
+            this.Surname = Surname;
+            this.DOB = DOB;
+            this.Age = Age;
+            this.Country = Country;
+            this.City = City;
         }
 
     }
