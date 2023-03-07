@@ -15,7 +15,7 @@ namespace FirstMVCProject.Models
 
         public string City { get; set; } 
 
-        public ProfileViewModel(string Name, string Surname, DateTime DOB, int Age, string Country, string City)
+        /*public ProfileViewModel(string Name, string Surname, DateTime DOB, int Age, string Country, string City)
         {
             this.Name = Name;
             this.Surname = Surname;
@@ -23,7 +23,17 @@ namespace FirstMVCProject.Models
             this.Age = Age;
             this.Country = Country;
             this.City = City;
-        }
+        }*/
 
+    }
+
+    public static class MyExtensions
+    {
+        public static string ToDateOnlyString(this DateTime date)
+        {
+            var str = date.ToLongDateString();
+
+            return str.Split(",")[1];
+        }
     }
 }

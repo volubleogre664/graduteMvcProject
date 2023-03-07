@@ -48,8 +48,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-    // app.MapControllerRoute(
-    // name: "default",
-    // pattern: "{controller=Profile}/{action=Indexx}/");
+app.MapControllerRoute(
+    name: "Profile",
+    pattern: "{controller=Profile}/{action=Index}/");
+
+/*app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=EditUser}/{id?}");*/
 
 app.Run();

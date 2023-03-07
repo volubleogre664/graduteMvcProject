@@ -17,11 +17,11 @@ namespace FirstMVCProject.Data
                 return;
             }
 
-            context.UserProfiles.AddRange(
+            /*context.UserProfiles.AddRange(
                 new ProfileViewModel("Nduduzo", "Shabalala", DateTime.Now, 32, "Russia", "Moscow"),
                 new ProfileViewModel("Walter", "White", DateTime.Now, 52, "United States", "New Mexico")
-             );
-
+             );*/
+            
             context.SaveChanges();
         }
     }

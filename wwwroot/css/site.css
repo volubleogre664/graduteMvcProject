@@ -16,3 +16,87 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add_user_form.active {
+    display: block;
+}
+
+.add_user_form.active ~ .background-overlay {
+    display: block;
+}
+
+
+.add_user_form {
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    width: 50%;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    left: 25%;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.add_user_form header {
+    width: 100%;
+    display: flex;
+    padding-bottom: 15px;
+    border-bottom: 1px solid gray;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add_user_form header h3 {
+    font-size: larger;
+    font-weight: 400;
+}
+
+.add_user_form main {
+    padding-top: 15px;
+}
+
+.add_user_form main form {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add_user_form main form > div {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.add_user_form main form > div:last-of-type {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add_user_form main form > div > div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.add_user_form main form > div > div input {
+    border: 1px solid #000;
+    border-radius: 6px;
+    padding: 9px;
+    width: 100% !important;
+}
