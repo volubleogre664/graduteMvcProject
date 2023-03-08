@@ -1,0 +1,61 @@
+﻿@model ProfileModel
+
+
+<div>
+    <h2 class="text-center">
+        Edit the user profile
+    </h2>
+
+    <div class="add_user_form" style="display: block;">
+        <header class="add_userHeader">
+            <h3>Edit User: <b>@Model.Name</b></h3>
+
+            <a class="btn-link" asp-action="Index" asp-controller="Profile">Return To View Profiles</a>
+        </header>
+
+        <main class="add_userMain">
+            <form method="post" asp-controller="Profile" asp-action="EditSelectedUser">
+                <input type="hidden" name="id" value=@Model.ID />
+                <div>
+                    <div>
+                        <label for="firstname">Firstname</label>
+                        <input type="text" name="firstname" required id="firstname" value="@Model.Name" />
+                    </div>
+
+                    <div>
+                        <label for="lastname">Lastname</label>
+                        <input type="text" name="lastname" required id="lastname" value="@Model.Surname" />
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="DOB">Date of Birth</label>
+                        <input type="date" name="dob" id="DOB" required value=@Model.DOB.ToString("yyyy-MM-dd") />
+                    </div>
+
+                    <div>
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" required value="@Model.Age" />
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="country">Country</label>
+                        <input name="country" type="text" id="country" required value="@Model.Country" />
+                    </div>
+
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" required value="@Model.City" />
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary">Edit User</button>
+                </div>
+            </form>
+        </main>
+
+</div>

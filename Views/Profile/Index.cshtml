@@ -1,33 +1,102 @@
-﻿
+﻿@model IEnumerable<ProfileModel>
 
 <div>
-    <h1>Hello, World. This is Profile Page</h1>
+    <h4>Hello, World. This is Profile Page</h4>
 
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Surname</th>
-      <th scope="col">Date of Birth</th>
-      <th scope="col">Age</th>
-      <th scope="col">Country</th>
-      <th scope="col">City</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      @* <th scope="row">1</th>
-      <th>Mark</th>
-      <td>Otto</td> *@
+    <table class="table table-bordered">
+        <thead class="bg-black text-white">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Age</th>
+                <th scope="col">Country</th>
+                <th scope="col">City</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Surname</td>
+                    <td>@user.DOB.ToLongDateString().Split(",")[1]</td>
+                    <td>@user.Age</td>
+                    <td>@user.Country</td>
+                    <td>@user.City</td>
+                    <td>
+                        <span>
+                            <a class="btn btn-outline-primary" asp-action="EditUser" asp-controller="Profile" asp-route-id="@user.ID">
+                                Edit
+                            </a>
 
-      <td>@Model.Name</td>
-      <td>@Model.Surname</td>
-      <td>@Model.DOB</td>
-      <td>@Model.Age</td>
-      <td>@Model.Country</td>
-      <td>@Model.City</td>
-    </tr>
-  </tbody>
-</table>
+                            <a class="btn btn-outline-primary" asp-action="DeleteUser" asp-controller="Profile" asp-route-id="@user.ID">
+                                Delete
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <button id="add_user" class="btn btn-primary">Add new User</button>
+    </div>
+
+    <div class="add_user_form">
+        <header class="add_userHeader">
+            <h3>Add User</h3>
+
+            <button id="add_user_cancel" class="btn btn-outline-secondary">Close</button>
+        </header>
+
+        <main class="add_userMain">
+            <form method="post" asp-controller="Profile" asp-action="AddUser">
+                <div>
+                    <div>
+                        <label for="firstname">Firstname</label>
+                        <input type="text" name="firstname" required id="firstname" />
+                    </div>
+
+                    <div>
+                        <label for="lastname">Lastname</label>
+                        <input type="text" name="lastname" required id="lastname" />
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" name="dob" id="dob" required />
+                    </div>
+
+                    <div>
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" required />
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="country">Country</label>
+                        <input name="country" type="text" id="country" required />
+                    </div>
+
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" required />
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary">Save User</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <div class="background-overlay"></div>
 </div>
 
