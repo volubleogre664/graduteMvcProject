@@ -7,11 +7,11 @@ namespace FirstMVCProject.Data
     {
         public ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
 
-        public DbSet<ProfileViewModel> UserProfiles { get; set; }
+        public DbSet<ProfileModel> UserProfiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProfileViewModel>().ToTable("UserProfiles");
+            modelBuilder.Entity<ProfileModel>().ToTable("UserProfiles");
         }
     }
 }

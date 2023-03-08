@@ -1,16 +1,16 @@
-﻿@model ProfileViewModel
+﻿@model ProfileModel
 
 
 <div>
-    <h2>
+    <h2 class="text-center">
         Edit the user profile
     </h2>
 
     <div class="add_user_form" style="display: block;">
         <header class="add_userHeader">
-            <h3>Edit User: @Model.Name</h3>
+            <h3>Edit User: <b>@Model.Name</b></h3>
 
-            <span id="add_user_cancel"></span>
+            <a class="btn-link" asp-action="Index" asp-controller="Profile">Return To View Profiles</a>
         </header>
 
         <main class="add_userMain">
@@ -30,8 +30,8 @@
 
                 <div>
                     <div>
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" name="dob" id="dob" required value=@Convert.ToDateTime(Model.DOB).ToString("yyyy-MM-dd") />
+                        <label for="DOB">Date of Birth</label>
+                        <input type="date" name="dob" id="DOB" required value=@Model.DOB.ToString("yyyy-MM-dd") />
                     </div>
 
                     <div>

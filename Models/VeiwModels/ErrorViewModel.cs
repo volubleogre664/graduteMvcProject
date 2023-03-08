@@ -1,4 +1,4 @@
-namespace FirstMVCProject.Models
+namespace FirstMVCProject.Models.VeiwModels
 {
     public class ErrorViewModel
     {

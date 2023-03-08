@@ -1,4 +1,4 @@
-﻿using FirstMVCProject.Models;
+﻿using FirstMVCProject.Models.VeiwModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

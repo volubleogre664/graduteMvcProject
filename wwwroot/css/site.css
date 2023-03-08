@@ -50,7 +50,7 @@ body {
     border-radius: 10px;
     z-index: 10;
     background-color: white;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 .add_user_form header {

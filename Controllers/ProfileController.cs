@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FirstMVCProject.Models;
 using FirstMVCProject.Data;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace FirstMVCProject.Controllers
@@ -17,7 +16,6 @@ namespace FirstMVCProject.Controllers
 
         public async Task<IActionResult> Index()
         {
-            /*var profile = new ProfileViewModel("Nduduzo", "Shabalala", DateTime.Now, 32, "Russia", "Moscow");*/
             return View(await _context.UserProfiles.ToListAsync());
         }
 
@@ -25,12 +23,12 @@ namespace FirstMVCProject.Controllers
         {
             var data = HttpContext.Request.Form;
 
-            _context.AddRange(new ProfileViewModel()
+            _context.AddRange(new ProfileModel()
             {
                 Name = data["firstname"],
                 Surname = data["lastname"],
                 DOB = Convert.ToDateTime(data["dob"]),
-                Age = int.Parse(data["age"]),
+                Age = int.TryParse(data["age"], out int output) ? output : 0,
                 Country = data["country"],
                 City = data["city"]
             });
@@ -45,9 +43,7 @@ namespace FirstMVCProject.Controllers
             var userProfile = await _context.UserProfiles.FindAsync(id);
 
             if (userProfile == null)
-            {
                 return NotFound();
-            }
 
             return View(userProfile);
         }
@@ -56,18 +52,34 @@ namespace FirstMVCProject.Controllers
         {
             var data = HttpContext.Request.Form;
 
-            var editedProfile = new ProfileViewModel()
+            if (data == null)
+                return NotFound();
+
+            var editedProfile = new ProfileModel()
             {
-                ID = int.Parse(data["id"]),
+                ID = int.TryParse(data["id"], out int output) ? output : 0,
                 Name = data["firstname"],
                 Surname = data["lastname"],
                 DOB = Convert.ToDateTime(data["dob"]),
-                Age = int.Parse(data["age"]),
+                Age = int.TryParse(data["age"], out output) ? output : 0,
                 Country = data["country"],
                 City = data["city"]
             };
 
             _context.UserProfiles.Update(editedProfile);
+            _context.SaveChanges();
+
+            return new RedirectResult("/Profile");
+        }
+
+        public IActionResult DeleteUser(int id)
+        {
+            var profile = _context.UserProfiles.Find(id);
+
+            if (profile == null)
+                return NotFound();
+
+            _context.UserProfiles.Remove(profile);
             _context.SaveChanges();
 
             return new RedirectResult("/Profile");
